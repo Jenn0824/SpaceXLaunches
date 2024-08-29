@@ -1,0 +1,36 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import Header from '../components/Header.astro';
+---
+<!--EN EL LAYOUT PODEMOS PONER ESTILOS GENERALES A TODAS LAS PAGINAS, INCLUYENDO SI QUEREMOS TENER SIEMPRE UN FOOTER O UNA CABECERA -->
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-black min-h-screen pb-32">
+		<Header/> <!--Ponemos este header aqui para que la cabecera aparezca en todas las páginas-->
+		<main class="max-w-5x1 px-4 m-auto">
+			<slot /> <!--Esto seria como el CHILDREN en REACT -->
+		</main>
+	</body>
+</html>
+<style is:global>
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+		color-scheme: dark light; /*Esta propiedad pone el texto blanco o negro por defecto segun el fondo */
+	}
+</style>
